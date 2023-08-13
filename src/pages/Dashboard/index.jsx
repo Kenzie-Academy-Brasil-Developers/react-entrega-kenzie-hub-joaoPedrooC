@@ -9,7 +9,7 @@ const Dashboard = ({ user, setUser }) => {
 
 	const handleLogout = () => {
 		navigate('/');
-		localStorage.removeItem('@KenzieHub:token');
+		localStorage.removeItem('@TOKEN');
 		setUser({});
 	};
 

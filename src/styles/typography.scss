@@ -1,0 +1,28 @@
+.title {
+	font-weight: 700;
+
+	&.lg {
+		font-size: clamp(0.902rem, 5vw, 1.125rem);
+	}
+
+	&.small {
+		font-size: 1rem;
+	}
+}
+
+.headline {
+	font-size: 0.75rem;
+
+	&.bold {
+		font-weight: 700;
+	}
+
+	&.notBold {
+		font-weight: 400;
+	}
+}
+
+.paragraph {
+	font-size: 1rem;
+	font-weight: 400;
+}

@@ -1,0 +1,19 @@
+.header {
+	padding: 0.8rem 0;
+	border-bottom: 1px solid var(--grey-3);
+
+	& > div {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
+.main {
+	& > section:last-child > div {
+		display: flex;
+		flex-direction: column;
+
+		gap: 1.44rem;
+	}
+}

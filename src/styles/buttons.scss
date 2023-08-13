@@ -1,0 +1,59 @@
+%btn-pink {
+	&.default {
+		background-color: var(--color-primary);
+		&:hover {
+			background-color: var(--color-primary-focus);
+		}
+	}
+
+	&.negative {
+		background-color: var(--color-primary-negative);
+		cursor: not-allowed;
+	}
+}
+
+%btn-gray {
+	&.disabled {
+		background-color: var(--grey-1);
+		&:hover {
+			background-color: var(--grey-2);
+		}
+	}
+}
+
+%btn-gray-dark {
+	background-color: var(--grey-3);
+	&:hover {
+		filter: brightness(1.1);
+	}
+}
+
+.btn {
+	color: var(--color-white);
+	border-radius: 0.25rem;
+
+	padding: 0rem 1.39588rem;
+
+	font-weight: 700;
+
+	&.pink {
+		@extend %btn-pink;
+		width: 100%;
+	}
+
+	&.gray {
+		@extend %btn-gray;
+	}
+
+	&.darkGray {
+		@extend %btn-gray-dark;
+	}
+
+	&.big {
+		height: 3rem;
+	}
+
+	&.small {
+		height: 2.5rem;
+	}
+}

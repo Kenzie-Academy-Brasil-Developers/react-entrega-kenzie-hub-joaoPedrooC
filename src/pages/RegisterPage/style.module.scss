@@ -1,0 +1,20 @@
+.header {
+	& > div {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		margin-top: 1.8rem;
+		margin-bottom: 0.6rem;
+
+		& > img {
+			width: clamp(6rem, 20vw, 7.6rem);
+		}
+	}
+}
+
+main {
+	span {
+		color: var(--grey-1);
+	}
+}

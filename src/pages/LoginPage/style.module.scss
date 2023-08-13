@@ -1,0 +1,30 @@
+.main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+
+	& > div {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		& > img {
+			margin-bottom: clamp(1.21rem, 7vw, 2.23rem);
+			width: clamp(6.3rem, 30vw, 9rem);
+		}
+
+		& > form {
+			& > h3 {
+				text-align: center;
+			}
+
+			& > span {
+				color: var(--grey-1);
+
+				margin: 0.8rem 0 0.25rem;
+				text-align: center;
+			}
+		}
+	}
+}

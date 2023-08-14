@@ -1,14 +1,10 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Logo from '../../assets/Logo.svg';
 import UserInfoSection from '../../components/UserInfoSection';
 import styles from './style.module.scss';
-import { useEffect, useState } from 'react';
 
 const Dashboard = ({ user, setUser }) => {
-	const navigate = useNavigate();
-
 	const handleLogout = () => {
-		navigate('/');
 		localStorage.removeItem('@TOKEN');
 		setUser({});
 	};
@@ -18,9 +14,12 @@ const Dashboard = ({ user, setUser }) => {
 			<header className={styles.header}>
 				<div className="container">
 					<img src={Logo} alt="KenzieHub Logo" />
-					<button onClick={handleLogout} className="btn darkGray small">
+					<Link
+						to={'/'}
+						onClick={handleLogout}
+						className="btn darkGray small headline bold">
 						Sair
-					</button>
+					</Link>
 				</div>
 			</header>
 			<main className={styles.main}>

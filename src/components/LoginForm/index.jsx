@@ -1,13 +1,13 @@
 import Input from '../Input';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import loginSchema from './loginSchema';
 import { useState } from 'react';
 import api from '../../services/api';
 import { toast } from 'react-toastify';
 
-const LoginForm = ({ handleRegisterPage, setUser }) => {
+const LoginForm = ({ setUser }) => {
 	const {
 		register,
 		handleSubmit,
@@ -66,12 +66,12 @@ const LoginForm = ({ handleRegisterPage, setUser }) => {
 				Entrar
 			</button>
 			<span className="headline">Ainda não possui uma conta?</span>
-			<button
-				onClick={handleRegisterPage}
-				className="btn gray disabled big"
+			<Link
+				to={'/register'}
+				className="btn gray disabled big link-sm"
 				disabled={loading}>
 				Cadastre-se
-			</button>
+			</Link>
 		</form>
 	);
 };

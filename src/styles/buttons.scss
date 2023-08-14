@@ -28,13 +28,20 @@
 	}
 }
 
-.btn {
+.btn,
+a {
 	color: var(--color-white);
 	border-radius: 0.25rem;
 
 	padding: 0rem 1.39588rem;
 
 	font-weight: 700;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	text-decoration: none;
 
 	&.pink {
 		@extend %btn-pink;

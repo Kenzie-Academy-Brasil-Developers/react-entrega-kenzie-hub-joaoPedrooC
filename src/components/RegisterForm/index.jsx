@@ -1,12 +1,10 @@
 import Input from '../Input';
 import Select from '../Select';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import registerSchema from './registerSchema';
-import api from '../../services/api';
-import { toast } from 'react-toastify';
+import { UserContext } from '../../providers/UserContext';
 
 const RegisterForm = () => {
 	const {
@@ -18,25 +16,13 @@ const RegisterForm = () => {
 		resolver: zodResolver(registerSchema),
 	});
 
+	const { registerUser } = useContext(UserContext);
 	const [loading, setLoading] = useState(false);
-	const navigate = useNavigate();
 
 	const submit = async formData => {
-		try {
-			setLoading(true);
-			await api.post('/users', formData);
-			toast.success('Conta criada com sucesso!');
-			reset();
-			navigate('/');
-		} catch (error) {
-			if (error.response.data.message === 'Email already exists') {
-				toast.error('Email já cadastrado');
-			} else {
-				toast.error('Ops! Algo deu errado');
-			}
-		} finally {
-			setLoading(false);
-		}
+		setLoading(true);
+		await registerUser(formData, reset);
+		setLoading(false);
 	};
 
 	return (
@@ -111,7 +97,8 @@ const RegisterForm = () => {
 			</Select>
 			<button
 				className={`btn pink ${isValid ? 'default' : 'negative'} big`}
-				type="submit">
+				type="submit"
+				disabled={loading}>
 				Cadastrar
 			</button>
 		</form>

@@ -2,12 +2,11 @@ import { Link } from 'react-router-dom';
 import Logo from '../../assets/Logo.svg';
 import UserInfoSection from '../../components/UserInfoSection';
 import styles from './style.module.scss';
+import { useContext } from 'react';
+import { UserContext } from '../../providers/UserContext';
 
-const Dashboard = ({ user, setUser }) => {
-	const handleLogout = () => {
-		localStorage.removeItem('@TOKEN');
-		setUser({});
-	};
+const Dashboard = () => {
+	const { handleLogout } = useContext(UserContext);
 
 	return (
 		<>
@@ -23,7 +22,7 @@ const Dashboard = ({ user, setUser }) => {
 				</div>
 			</header>
 			<main className={styles.main}>
-				<UserInfoSection userInfo={user} setUser={setUser} />
+				<UserInfoSection />
 				<section>
 					<div className="container">
 						<h2>Que pena! Estamos em desenvolvimento :(</h2>

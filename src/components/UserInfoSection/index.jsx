@@ -1,6 +1,10 @@
+import { useContext } from 'react';
+import { UserContext } from '../../providers/UserContext';
 import styles from './style.module.scss';
 
-const UserInfoSection = ({ userInfo }) => {
+const UserInfoSection = () => {
+	const { user: userInfo } = useContext(UserContext);
+
 	return (
 		<section className={styles.userInfoSection}>
 			<div className="container">

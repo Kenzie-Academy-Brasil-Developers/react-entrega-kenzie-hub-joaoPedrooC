@@ -1,13 +1,14 @@
 import Input from '../Input';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import loginSchema from './loginSchema';
-import { useState } from 'react';
-import api from '../../services/api';
-import { toast } from 'react-toastify';
+import { useContext, useState } from 'react';
+import { UserContext } from '../../providers/UserContext';
 
-const LoginForm = ({ setUser }) => {
+const LoginForm = () => {
+	const { login } = useContext(UserContext);
+
 	const {
 		register,
 		handleSubmit,
@@ -17,27 +18,11 @@ const LoginForm = ({ setUser }) => {
 	});
 
 	const [loading, setLoading] = useState(false);
-	const navigate = useNavigate();
 
 	const submit = async formData => {
-		try {
-			setLoading(true);
-			const { data } = await api.post('/sessions', formData);
-			localStorage.setItem('@TOKEN', JSON.stringify(data.token));
-			setUser(data.user);
-			toast.success('Login realizado com sucesso');
-			navigate('/dashboard');
-		} catch (error) {
-			const errorMessage = error.response.data.message;
-
-			if (errorMessage.includes('email') || errorMessage.includes('password')) {
-				toast.error('Email ou senha incorretos!');
-			} else {
-				toast.error('Ops! Algo deu errdo!');
-			}
-		} finally {
-			setLoading(false);
-		}
+		setLoading(true);
+		await login(formData);
+		setLoading(false);
 	};
 
 	return (

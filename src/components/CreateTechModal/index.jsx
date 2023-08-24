@@ -24,7 +24,7 @@ const CreateTechModal = () => {
 		<div role="dialog" className="dialog">
 			<div className="container">
 				<div>
-					<h3>Cadastrar Tecnologia</h3>
+					<h3 className="title lg">Cadastrar Tecnologia</h3>
 					<button onClick={() => setCreatingTechValue()}>
 						<MdClose />
 					</button>

@@ -1,0 +1,47 @@
+.techCard {
+	display: flex;
+	justify-content: space-between;
+
+	padding: 0.8rem 1rem;
+
+	background-color: var(--grey-4);
+
+	border-radius: 4px;
+	gap: 0.59rem;
+
+	height: 5rem;
+
+	& > .techInfo {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	& > .actions {
+		display: flex;
+		align-items: center;
+		align-self: flex-end;
+
+		height: min-content;
+
+		gap: 0.5rem;
+
+		& > img {
+			cursor: pointer;
+		}
+	}
+
+	@media (min-width: 415px) {
+		height: 4rem;
+		& > .techInfo {
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+		}
+		& > .actions {
+			align-items: center;
+			align-self: center;
+		}
+	}
+}

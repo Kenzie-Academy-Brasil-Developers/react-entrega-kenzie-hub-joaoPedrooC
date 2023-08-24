@@ -4,9 +4,14 @@ import UserInfoSection from '../../components/UserInfoSection';
 import styles from './style.module.scss';
 import { useContext } from 'react';
 import { UserContext } from '../../providers/UserContext';
+import TechList from '../../components/TechList';
+import { TechContext } from '../../providers/TechContext';
+import CreateTechModal from '../../components/CreateTechModal';
+import EditTechModal from '../../components/EditTechModal';
 
 const Dashboard = () => {
 	const { handleLogout } = useContext(UserContext);
+	const { creatingTech, editingTech } = useContext(TechContext);
 
 	return (
 		<>
@@ -23,15 +28,9 @@ const Dashboard = () => {
 			</header>
 			<main className={styles.main}>
 				<UserInfoSection />
-				<section>
-					<div className="container">
-						<h2>Que pena! Estamos em desenvolvimento :(</h2>
-						<p className="paragraph">
-							Nossa aplicação está em desenvolvimento, em breve teremos
-							novidades
-						</p>
-					</div>
-				</section>
+				<TechList />
+				{creatingTech === true ? <CreateTechModal /> : null}
+				{editingTech !== null ? <EditTechModal /> : null}
 			</main>
 		</>
 	);

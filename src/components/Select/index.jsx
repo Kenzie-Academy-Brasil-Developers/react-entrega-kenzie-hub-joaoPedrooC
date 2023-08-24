@@ -4,7 +4,7 @@ import { FaAngleDown } from 'react-icons/fa';
 const Select = forwardRef(({ label, errors, children, ...rest }, ref) => {
 	return (
 		<div className="inputContainer">
-			<label>{label}</label>
+			<label className="headline">{label}</label>
 			<div className="selectContainer">
 				<select className="paragraph" {...rest} ref={ref}>
 					{children}

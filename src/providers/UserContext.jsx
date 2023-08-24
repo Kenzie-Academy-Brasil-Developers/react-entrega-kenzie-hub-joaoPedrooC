@@ -8,6 +8,8 @@ export const UserContext = createContext({});
 export const UserProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(false);
+
+	const [techs, setTechs] = useState([]);
 	const navigate = useNavigate();
 
 	const handleLogout = () => {
@@ -21,13 +23,14 @@ export const UserProvider = ({ children }) => {
 		const getUserInfo = async () => {
 			try {
 				setLoading(true);
-				const userData = await api.get('/profile', {
+				const { data } = await api.get('/profile', {
 					headers: {
 						Authorization: `Bearer ${token}`,
 					},
 				});
 
-				setUser(userData.data);
+				setUser(data);
+				setTechs(data.techs);
 				navigate('/dashboard');
 			} catch (error) {
 				navigate('/');
@@ -66,7 +69,6 @@ export const UserProvider = ({ children }) => {
 			reset();
 			navigate('/');
 		} catch (error) {
-			console.log(error);
 			if (error.response.data.message === 'Email already exists') {
 				toast.error('Email já cadastrado');
 			} else {
@@ -77,7 +79,16 @@ export const UserProvider = ({ children }) => {
 
 	return (
 		<UserContext.Provider
-			value={{ user, setUser, handleLogout, login, registerUser, loading }}>
+			value={{
+				user,
+				setUser,
+				handleLogout,
+				login,
+				registerUser,
+				loading,
+				techs,
+				setTechs,
+			}}>
 			{children}
 		</UserContext.Provider>
 	);

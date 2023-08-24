@@ -1,0 +1,44 @@
+.techSection {
+	& > div {
+		div {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+
+			& > button {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				width: clamp(1.8rem, 8vw, 2.3rem);
+				height: clamp(1.8rem, 8vw, 2.3rem);
+
+				border-radius: 4px;
+
+				color: white;
+				background-color: var(--grey-3);
+			}
+		}
+
+		& > ul {
+			display: flex;
+			flex-direction: column;
+
+			gap: 0.42rem;
+
+			width: 100%;
+			background-color: var(--grey-3);
+
+			margin-top: 1.75rem;
+
+			border-radius: 4px;
+
+			padding: 1.5rem 1.45rem;
+		}
+
+		& > h3 {
+			margin-top: clamp(1.3rem, 20vw, 1.8rem);
+		}
+	}
+}
